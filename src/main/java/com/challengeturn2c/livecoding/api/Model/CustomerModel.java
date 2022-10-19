@@ -1,29 +1,30 @@
 package com.challengeturn2c.livecoding.api.Model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+@Entity
+@Table(name = "cliente")
 public class CustomerModel implements Serializable {
 
     private static final long serialVersionUID = 3960436649365666213L;
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long Id;
+
+    private Long id;
     @Column(name = "nome", nullable = false)
     private String name;
-    private List<SellerModel> sellerModel;
+    @Column(name = "vendedor", nullable = false)
+    private List<SellerModel> sellerModels;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {
@@ -34,20 +35,21 @@ public class CustomerModel implements Serializable {
         this.name = name;
     }
 
-    public List<SellerModel> getSellerModel() {
-        return sellerModel;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    public List<SellerModel> getSellerModels() {
+        return sellerModels;
     }
 
-    public void setSellerModel(List<SellerModel> sellerModel) {
-        this.sellerModel = sellerModel;
+    public void setSellerModels(List<SellerModel> sellerModels) {
+        this.sellerModels = sellerModels;
     }
 
     @Override
     public String toString() {
         return "CustomerModel{" +
-                "Id=" + Id +
+                "Id=" + id +
                 ", name='" + name + '\'' +
-                ", sellerModel=" + sellerModel +
+                ", sellerModel=" + sellerModels +
                 '}';
     }
 }

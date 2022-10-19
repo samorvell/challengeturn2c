@@ -1,14 +1,24 @@
 package com.challengeturn2c.livecoding.api.Model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
+@Entity
+@Table(name = "vendedor")
 public class SellerModel implements Serializable {
 
-    private Long Id;
-    private String name;
-    private List<CustomerModel> customerModel;
+    private static final long serialVersionUID = 6524560251526772839L;
 
+    private Long Id;
+    @Column(name = "nome", nullable = false)
+    private String name;
+    @Column(name = "cliente", nullable = false)
+    private Set<CustomerModel> customerModels;
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     public Long getId() {
         return Id;
     }
@@ -25,12 +35,13 @@ public class SellerModel implements Serializable {
         this.name = name;
     }
 
-    public List<CustomerModel> getCustomerModel() {
-        return customerModel;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    public Set<CustomerModel> getCustomerModels() {
+        return customerModels;
     }
 
-    public void setCustomerModel(List<CustomerModel> customerModel) {
-        this.customerModel = customerModel;
+    public void setCustomerModels(List<CustomerModel> customerModels) {
+        this.customerModels = customerModels;
     }
 
     @Override
@@ -38,7 +49,7 @@ public class SellerModel implements Serializable {
         return "SellerModel{" +
                 "Id=" + Id +
                 ", name='" + name + '\'' +
-                ", customerModel=" + customerModel +
+                ", customerModel=" + customerModels +
                 '}';
     }
 }
