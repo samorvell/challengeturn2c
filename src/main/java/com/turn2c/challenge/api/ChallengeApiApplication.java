@@ -1,0 +1,13 @@
+package com.turn2c.challenge.api;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class ChallengeApiApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ChallengeApiApplication.class, args);
+	}
+
+}

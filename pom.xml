@@ -8,13 +8,13 @@
 		<version>2.7.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.challengeturn2c</groupId>
-	<artifactId>live-coding-api</artifactId>
+	<groupId>com.turn2c</groupId>
+	<artifactId>challenge-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>live-coding-api</name>
-	<description>turn2c challenge</description>
+	<name>challenge-api</name>
+	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -36,12 +36,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>jakarta.validation</groupId>
-			<artifactId>jakarta.validation-api</artifactId>
-			<version>2.0.2</version>
-		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>2.0.2</version>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>
