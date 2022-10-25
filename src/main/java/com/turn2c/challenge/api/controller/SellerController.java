@@ -2,8 +2,6 @@ package com.turn2c.challenge.api.controller;
 
 
 import com.turn2c.challenge.api.DTO.SellerDto;
-import com.turn2c.challenge.api.DTO.CustomerRegisterDto;
-import com.turn2c.challenge.api.model.CustomerModel;
 import com.turn2c.challenge.api.model.SellerModel;
 import com.turn2c.challenge.api.response.Response;
 import com.turn2c.challenge.api.service.CustomerService;
@@ -78,7 +76,7 @@ public class SellerController {
         SellerDto sellerDto = new SellerDto();
         sellerDto.setId(sellerModel.getId());
         sellerDto.setName(sellerModel.getName());
-        sellerDto.setCustomerModels(sellerModel.getCustomerModel());
+        sellerDto.setCustomerModels(sellerModel.getCustomers());
 
         return sellerDto;
     }
@@ -87,7 +85,7 @@ public class SellerController {
         SellerDto sellerDto = new SellerDto();
         sellerDto.setId(sellerModel.getId());
         sellerDto.setName(sellerModel.getName());
-        sellerDto.setCustomerModels(sellerModel.getCustomerModel());
+        sellerDto.setCustomerModels(sellerModel.getCustomers());
 
         return sellerDto;
     }
@@ -97,7 +95,7 @@ public class SellerController {
             throws NoSuchAlgorithmException {
         SellerModel sellerModel = new SellerModel();
         sellerModel.setName(sellerDto.getName());
-        sellerModel.setCustomerModel(sellerDto.getCustomerModels());
+        sellerModel.setCustomers(sellerDto.getCustomerModels());
 
 
         return sellerModel;

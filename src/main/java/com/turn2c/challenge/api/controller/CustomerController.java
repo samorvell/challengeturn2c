@@ -2,7 +2,6 @@ package com.turn2c.challenge.api.controller;
 
 
 import com.turn2c.challenge.api.DTO.CustomerDto;
-import com.turn2c.challenge.api.DTO.CustomerRegisterDto;
 import com.turn2c.challenge.api.model.CustomerModel;
 import com.turn2c.challenge.api.model.SellerModel;
 import com.turn2c.challenge.api.response.Response;
@@ -15,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Optional;
@@ -55,12 +53,12 @@ public class CustomerController {
     }
 
     @PostMapping(value = "/registercustomer")
-    public ResponseEntity<Response<CustomerRegisterDto>> registerCustomer(@RequestBody CustomerRegisterDto customerRegisterDto,
+    public ResponseEntity<Response<CustomerDto>> registerCustomer(@RequestBody CustomerDto customerDto,
                                                                    BindingResult result) throws NoSuchAlgorithmException {
-        log.info("Cadastrando cliente: {}", customerRegisterDto.toString());
-        Response<CustomerRegisterDto> response = new Response<CustomerRegisterDto>();
+        log.info("Cadastrando cliente: {}", customerDto.toString());
+        Response<CustomerDto> response = new Response<CustomerDto>();
 
-        CustomerModel customerModel = this.convertDtoToClient(customerRegisterDto, result);
+        CustomerModel customerModel = this.convertDtoToClient(customerDto, result);
 
         if (result.hasErrors()) {
             log.error("Erro validando dados de cadastro cliente: {}", result.getAllErrors());
@@ -68,8 +66,8 @@ public class CustomerController {
             return ResponseEntity.badRequest().body(response);
         }
 
-        Optional<SellerModel> seller = this.sellerService.findSellerByName(customerRegisterDto.getName());
-        seller.ifPresent(sel -> customerModel.setSellerModel((List<SellerModel>) sel));
+        Optional<SellerModel> seller = this.sellerService.findSellerByName(customerDto.getName());
+        seller.ifPresent(sel -> customerModel.setSellers((List<SellerModel>) sel));
 
         this.customerService.save(customerModel);
 
@@ -82,25 +80,27 @@ public class CustomerController {
         CustomerDto customerDto = new CustomerDto();
         customerDto.setId(customerModel.getId());
         customerDto.setName(customerModel.getName());
+        customerDto.setSeller(customerModel.getSellerName());
 
         return customerDto;
     }
 
-    private CustomerRegisterDto convertRegisterDtoToCustomer(CustomerModel customerModel) {
-        CustomerRegisterDto customerRegisterDto = new CustomerRegisterDto();
-        customerRegisterDto.setId(customerModel.getId());
-        customerRegisterDto.setName(customerModel.getName());
-        customerRegisterDto.setSeller(customerModel.getSellerModel());
+    private CustomerDto convertRegisterDtoToCustomer(CustomerModel customerModel) {
+        CustomerDto customerDto = new CustomerDto();
+        customerDto.setId(customerModel.getId());
+        customerDto.setName(customerModel.getName());
+        customerDto.setSellers(customerModel.getSellers());
 
-        return customerRegisterDto;
+        return customerDto;
     }
 
 
-    private CustomerModel convertDtoToClient(CustomerRegisterDto customerRegisterDto, BindingResult result)
+    private CustomerModel convertDtoToClient(CustomerDto customerDto, BindingResult result)
             throws NoSuchAlgorithmException {
         CustomerModel customerModel = new CustomerModel();
-        customerModel.setName(customerRegisterDto.getName());
-        customerModel.setSellerModel(customerRegisterDto.getSeller());
+        customerModel.setName(customerDto.getName());
+        customerModel.setSellerName(customerDto.getSeller());
+        customerModel.setSellers(customerDto.getSellers());
 
 
         return customerModel;

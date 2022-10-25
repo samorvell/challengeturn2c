@@ -8,16 +8,11 @@ public class CustomerDto {
 
     private Long id;
     private String name;
-    private List<SellerModel> seller;
+    private String seller;
+    private List<SellerModel> sellers;
 
     public CustomerDto(){
 
-    }
-
-    public CustomerDto(Long id, String name, List<SellerModel> seller) {
-        this.id = id;
-        this.name = name;
-        this.seller = seller;
     }
 
     public Long getId() {
@@ -36,20 +31,29 @@ public class CustomerDto {
         this.name = name;
     }
 
-    public List<SellerModel> getSeller() {
+    public List<SellerModel> getSellers() {
+        return sellers;
+    }
+
+    public void setSellers(List<SellerModel> sellers) {
+        this.sellers = sellers;
+    }
+
+    public String getSeller() {
         return seller;
     }
 
-    public void setSeller(List<SellerModel> seller) {
+    public void setSeller(String seller) {
         this.seller = seller;
     }
 
     @Override
     public String toString() {
-        return "CustomerRegisterDto{" +
+        return "CustomerDto{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", seller='" + seller + '\'' +
+                ", nomeVendedor='" + seller + '\'' +
+                ", seller=" + sellers +
                 '}';
     }
 }

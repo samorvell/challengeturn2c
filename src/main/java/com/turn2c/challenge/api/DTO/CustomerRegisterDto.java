@@ -7,16 +7,18 @@ import java.util.List;
 public class CustomerRegisterDto {
 
     private Long id;
-    private String name;
+    private String nome;
+    private String nomeVendedor;
     private List <SellerModel> seller;
 
     public CustomerRegisterDto(){
 
     }
 
-    public CustomerRegisterDto(Long id, String name, List<SellerModel> seller) {
+    public CustomerRegisterDto(Long id, String nome, String nomeVendedor, List<SellerModel> seller) {
         this.id = id;
-        this.name = name;
+        this.nome = nome;
+        this.nomeVendedor = nomeVendedor;
         this.seller = seller;
     }
 
@@ -28,12 +30,12 @@ public class CustomerRegisterDto {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public List<SellerModel> getSeller() {
@@ -44,12 +46,21 @@ public class CustomerRegisterDto {
         this.seller = seller;
     }
 
+    public String getNomeVendedor() {
+        return nomeVendedor;
+    }
+
+    public void setNomeVendedor(String nomeVendedor) {
+        this.nomeVendedor = nomeVendedor;
+    }
+
     @Override
     public String toString() {
         return "CustomerRegisterDto{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", seller='" + seller + '\'' +
+                ", nome='" + nome + '\'' +
+                ", nomeVendedor='" + nomeVendedor + '\'' +
+                ", seller=" + seller +
                 '}';
     }
 }

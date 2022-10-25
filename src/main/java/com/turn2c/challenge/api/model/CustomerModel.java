@@ -13,7 +13,8 @@ public class CustomerModel implements Serializable {
 
     private Long id;
     private String name;
-    private List<SellerModel> sellerModel;
+    private String sellerName;
+    private List<SellerModel> sellers;
 
 
     @Id
@@ -35,12 +36,20 @@ public class CustomerModel implements Serializable {
     }
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    public List<SellerModel> getSellerModel() {
-        return sellerModel;
+    public List<SellerModel> getSellers() {
+        return sellers;
     }
 
-    public void setSellerModel(List<SellerModel> sellerModel) {
-        this.sellerModel = sellerModel;
+    public void setSellers(List<SellerModel> sellers) {
+        this.sellers = sellers;
+    }
+
+    public String getSellerName() {
+        return sellerName;
+    }
+
+    public void setSellerName(String sellerName) {
+        this.sellerName = sellerName;
     }
 
     @Override
@@ -48,7 +57,8 @@ public class CustomerModel implements Serializable {
         return "CustomerModel{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", sellerModel=" + sellerModel +
+                ", sellerName='" + sellerName + '\'' +
+                ", sellers=" + sellers +
                 '}';
     }
 }
