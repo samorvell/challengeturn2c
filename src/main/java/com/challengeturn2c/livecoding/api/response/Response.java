@@ -1,4 +1,4 @@
-package com.turn2c.challenge.api.response;
+package com.challengeturn2c.livecoding.api.response;
 
 import java.util.ArrayList;
 import java.util.List;

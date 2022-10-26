@@ -1,4 +1,4 @@
-package com.turn2c.challenge.api.model;
+package com.challengeturn2c.livecoding.api.model;
 
 import javax.persistence.*;
 import java.io.Serializable;

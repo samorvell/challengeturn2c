@@ -1,8 +1,8 @@
-package com.turn2c.challenge.api.serviceimpl;
+package com.challengeturn2c.livecoding.api.serviceimpl;
 
-import com.turn2c.challenge.api.model.SellerModel;
-import com.turn2c.challenge.api.repository.SellerRepository;
-import com.turn2c.challenge.api.service.SellerService;
+import com.challengeturn2c.livecoding.api.model.SellerModel;
+import com.challengeturn2c.livecoding.api.repository.SellerRepository;
+import com.challengeturn2c.livecoding.api.service.SellerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,11 +1,11 @@
-package com.turn2c.challenge.api.controller;
+package com.challengeturn2c.livecoding.api.controller;
 
 
-import com.turn2c.challenge.api.DTO.SellerDto;
-import com.turn2c.challenge.api.model.SellerModel;
-import com.turn2c.challenge.api.response.Response;
-import com.turn2c.challenge.api.service.CustomerService;
-import com.turn2c.challenge.api.service.SellerService;
+import com.challengeturn2c.livecoding.api.DTO.SellerDto;
+import com.challengeturn2c.livecoding.api.model.SellerModel;
+import com.challengeturn2c.livecoding.api.response.Response;
+import com.challengeturn2c.livecoding.api.service.CustomerService;
+import com.challengeturn2c.livecoding.api.service.SellerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

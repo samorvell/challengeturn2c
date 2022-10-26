@@ -1,24 +1,20 @@
-package com.turn2c.challenge.api.model;
+package com.challengeturn2c.livecoding.api.DTO;
 
-import javax.persistence.Id;
+import com.challengeturn2c.livecoding.api.model.SellerModel;
 
-import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 
-@Entity
-@Table(name = "cliente")
-public class CustomerModel implements Serializable {
-
+public class CustomerDto {
 
     private Long id;
     private String name;
-    private String sellerName;
+    private String seller;
     private List<SellerModel> sellers;
 
+    public CustomerDto(){
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    }
+
     public Long getId() {
         return id;
     }
@@ -35,7 +31,6 @@ public class CustomerModel implements Serializable {
         this.name = name;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public List<SellerModel> getSellers() {
         return sellers;
     }
@@ -44,21 +39,21 @@ public class CustomerModel implements Serializable {
         this.sellers = sellers;
     }
 
-    public String getSellerName() {
-        return sellerName;
+    public String getSeller() {
+        return seller;
     }
 
-    public void setSellerName(String sellerName) {
-        this.sellerName = sellerName;
+    public void setSeller(String seller) {
+        this.seller = seller;
     }
 
     @Override
     public String toString() {
-        return "CustomerModel{" +
+        return "CustomerDto{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", sellerName='" + sellerName + '\'' +
-                ", sellers=" + sellers +
+                ", nomeVendedor='" + seller + '\'' +
+                ", seller=" + sellers +
                 '}';
     }
 }

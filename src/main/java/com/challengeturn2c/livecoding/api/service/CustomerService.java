@@ -1,6 +1,6 @@
-package com.turn2c.challenge.api.service;
+package com.challengeturn2c.livecoding.api.service;
 
-import com.turn2c.challenge.api.model.CustomerModel;
+import com.challengeturn2c.livecoding.api.model.CustomerModel;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

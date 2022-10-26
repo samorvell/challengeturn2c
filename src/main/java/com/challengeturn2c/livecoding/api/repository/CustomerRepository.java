@@ -1,6 +1,6 @@
-package com.turn2c.challenge.api.repository;
+package com.challengeturn2c.livecoding.api.repository;
 
-import com.turn2c.challenge.api.model.CustomerModel;
+import com.challengeturn2c.livecoding.api.model.CustomerModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 

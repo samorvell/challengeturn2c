@@ -1,6 +1,6 @@
-package com.turn2c.challenge.api.DTO;
+package com.challengeturn2c.livecoding.api.DTO;
 
-import com.turn2c.challenge.api.model.SellerModel;
+import com.challengeturn2c.livecoding.api.model.SellerModel;
 
 import java.util.List;
 
